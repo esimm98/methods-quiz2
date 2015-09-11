@@ -18,4 +18,10 @@ class MethodsQuiz2Test < MiniTest::Test
 		assert_equal 3, @m.dice_sum(1, 1)
 	end
 
+	def test_max_maybe
+		assert_equal 0, @m.max_maybe(1, 1)
+		assert_equal 7, @m.max_maybe(12, 7)
+		assert_equal 11, @m.max_maybe(11, 7)
+	end
+
 end
