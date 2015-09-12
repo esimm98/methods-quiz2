@@ -18,6 +18,22 @@ module MethodsQuiz2
 		temp >= 60 && (temp <= 90 && !summer) || (temp <= 100 && summer)
 	end
 
+	def red_ticket(a, b, c)
+		if(a == b && b == c)
+			if(a == 2)
+				return 10
+			else
+				return 5
+			end
+		else
+			if (a != b && a != c)
+				return 1
+			else
+				return 0
+			end
+		end
+	end
+
 	private
 
 		def without_doubles(a, b)
