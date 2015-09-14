@@ -1,31 +1,35 @@
 module MethodsQuiz2
-
-	def dice_sum(a, b)
-		without_doubles(a, b) ? add_non_doubles(a, b) : add_doubles(a, b) 
+	
+	def without_doubles(die1, die2, no_doubles)
+		if(!no_doubles || die1 != die2)
+			add_non_doubles(die1, die2)
+		else
+			add_doubles(die1, die2)
+		end
 	end
 
 	def max_maybe(a, b)
-		if (double(a, b))
+		if (a == b)
 			return 0
-		elsif (equal_remainder(a, b))
-			return_max(a, b)
-		else
+		elsif (a % 5 == b % 5)
 			return_min(a, b)
+		else
+			return_max(a, b)
 		end
 	end
 
 	def squirrels_play?(temp, summer)
+		temp >= 60 && ((temp <= 90 && !summer) || (temp <= 100 && summer))
+	end
 
+	def red_ticket(a, b, c)
+		all_equal(a, b, c) ? (all_2(a, b, c) ? 10 : 5) : (a_different(a, b, c) ? 1 : 0)
 	end
 
 	private
 
-		def without_doubles(a, b)
-			a != b ? true : false
-		end
-
-		def double(a, b)
-			a == b
+		def no_doubles(a, b)
+			no_doubles ? true : false
 		end
 
 		def add_non_doubles(a, b)
@@ -42,11 +46,7 @@ module MethodsQuiz2
 		end
 
 
-		def equal_remainder(a, b)
-			a % 5 == b % 5
-		end
-
-		def return_max
+		def return_max(a, b)
 			if (a > b)
 				return a
 			else
@@ -54,12 +54,24 @@ module MethodsQuiz2
 			end
 		end
 
-		def return_min
+		def return_min(a, b)
 			if (a < b)
 				return a
 			else
 				return b
 			end
+		end
+
+		def all_equal(a, b, c)
+			a == b && b == c ? true : false
+		end
+
+		def all_2(a, b, c)
+			a == 2 ? true : false
+		end
+
+		def a_different(a, b, c)
+			a != b && a != c ? true : false
 		end
 
 end
